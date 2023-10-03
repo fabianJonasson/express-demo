@@ -25,5 +25,31 @@ describe('base', () => {
 });
 
 describe('extra', () => {
+    test('GET /users', done => {
+        request(app)
+        .get('/users')
+        .expect(200)
+        .end(done);
+    });
 
+    test('GET specific user', done => {
+        request(app)
+        .get('/user/1')
+        .expect(200, '')
+        .end(done);
+    });
+
+    test('DELETE a specific user', done => {
+        request(app)
+        .delete('/user/1')
+        .expect(200, 'user deleted')
+        .end(done);
+    });
+
+    test('POST a new user', done => {
+        request(app)
+        .post('/user')
+        .expect(200, 'user created')
+        .end(done);
+    });
 });
